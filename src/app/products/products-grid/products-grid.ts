@@ -32,6 +32,7 @@ export class ProductsGrid {
       description:
         'Enhance your workspace with our ergonomic office chair, designed for comfort and support during long hours of sitting.',
       price: 149.99,
+      originalPrice: 199.99,
     },
   ]);
 }

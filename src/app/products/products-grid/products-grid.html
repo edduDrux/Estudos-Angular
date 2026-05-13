@@ -1,3 +1,19 @@
-<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4">
-  <app-product-card />
+<div class="grid gap-4">
+  <p>Total Products: {{ products().length }}</p>
+
+  <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4">
+    @for (product of products(); track product.id) {
+      <app-product-card />
+    } @empty {
+      <div class="flex col-span-full flex-col items-center justify-center py-16 px-8 text-center">
+        <mat-icon class="mb-4 text-(--mat-sys-outline)! w-16! h-16! text-[4rem]! leading-16!">
+          inventory_2
+        </mat-icon>
+        <h3 class="text-(--mat-sys-on-surface)!">No products available</h3>
+        <p class="text-(--mat-sys-on-surface-variant)!">
+          Please check back later for new arrivals!
+        </p>
+      </div>
+    }
+  </div>
 </div>

@@ -1,14 +1,15 @@
 <mat-card class="h-full flex flex-col">
   <mat-card-header>
-    <mat-card-title>Product Name</mat-card-title>
+    <mat-card-title>{{ product().name }}</mat-card-title>
     <mat-card-subtitle>Category</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content class="flex-1">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis vulputate lorem.</p>
+    <p>{{ product().description }}</p>
+    <p class="mt-4 text-lg font-semibold">${{ product().price }}</p>
   </mat-card-content>
 
   <mat-card-actions>
-    <button matButton>ADD TO CART</button>
+    <button matButton>{{ addButtonLabel() }}</button>
   </mat-card-actions>
 </mat-card>

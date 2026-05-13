@@ -11,7 +11,9 @@
 ### Boas Práticas
 
 - Caso você tenha qualquer váriavel que será somente utilizada para exibir no html, é aconselhado é declarar aquela váriavel como `protected`:
+
   > Ex: protected title = 'Hello World!'; ou protected title = signals('Hello World!');
+
 - Pois como sabemos as váriaveis publicas podem ser acessadas fora do componente, as váriaveis privadas só podem ser acessadas dentro do componente e as váriaveis protegidas podem ser acessada por outras classes que extenden a classe que esta váriavel protegida está
 
 ### Signals

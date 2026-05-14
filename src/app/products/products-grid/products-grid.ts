@@ -53,11 +53,14 @@ export class ProductsGrid {
     });
   });
 
-  protected clearSearch() {
-    this.searchTerm.set('');
+  protected onAddToCard(product: Product) {
+    console.log('Product added to cart:', product.name);
   }
+  // protected clearSearch() {
+  //   this.searchTerm.set('');
+  // }
 
-  protected trimSearch() {
-    this.searchTerm.update((value) => value.trim());
-  }
+  // protected trimSearch() {
+  //   this.searchTerm.update((value) => value.trim());
+  // }
 }

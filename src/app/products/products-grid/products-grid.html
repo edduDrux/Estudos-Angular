@@ -6,7 +6,7 @@
 
   <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4">
     @for (product of filteredProducts(); track product.id) {
-      <app-product-card [product]="product" />
+      <app-product-card [product]="product" (addToCart)="onAddToCard($event)" />
     } @empty {
       <div class="flex col-span-full flex-col items-center justify-center py-16 px-8 text-center">
         <mat-icon class="mb-4 text-(--mat-sys-outline)! w-16! h-16! text-[4rem]! leading-16!">

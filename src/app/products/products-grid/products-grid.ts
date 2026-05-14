@@ -1,15 +1,19 @@
-import { Component, signal } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { Component, computed, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { Product } from '../interface/product';
 import { ProductCard } from '../product-card/product-card';
 
 @Component({
   selector: 'app-products-grid',
-  imports: [ProductCard, MatIconModule],
+  imports: [ProductCard, MatIcon, MatInputModule, MatFormFieldModule, FormsModule],
   templateUrl: './products-grid.html',
   styleUrl: './products-grid.css',
 })
 export class ProductsGrid {
+  protected readonly searchTerm = signal('');
   protected readonly products = signal<Product[]>([
     {
       id: 1,
@@ -35,4 +39,25 @@ export class ProductsGrid {
       originalPrice: 199.99,
     },
   ]);
+
+  protected readonly filteredProducts = computed<Product[]>(() => {
+    const term = this.searchTerm().toLowerCase();
+
+    if (!term) return this.products();
+
+    return this.products().filter((product: Product) => {
+      return (
+        product.name.toLowerCase().includes(term) ||
+        product.description.toLowerCase().includes(term)
+      );
+    });
+  });
+
+  protected clearSearch() {
+    this.searchTerm.set('');
+  }
+
+  protected trimSearch() {
+    this.searchTerm.update((value) => value.trim());
+  }
 }

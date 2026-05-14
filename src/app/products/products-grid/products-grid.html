@@ -1,16 +1,19 @@
 <div class="grid gap-4">
+  <mat-form-field appearance="outline" class="w-full block">
+    <mat-label>Search products</mat-label>
+    <input matInput [(ngModel)]="searchTerm" placeholder="e.g., wireless headphones" />
+  </mat-form-field>
+
   <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4">
-    @for (product of products(); track product.id) {
+    @for (product of filteredProducts(); track product.id) {
       <app-product-card [product]="product" />
     } @empty {
       <div class="flex col-span-full flex-col items-center justify-center py-16 px-8 text-center">
         <mat-icon class="mb-4 text-(--mat-sys-outline)! w-16! h-16! text-[4rem]! leading-16!">
           inventory_2
         </mat-icon>
-        <h3 class="text-(--mat-sys-on-surface)!">No products available</h3>
-        <p class="text-(--mat-sys-on-surface-variant)!">
-          Please check back later for new arrivals!
-        </p>
+
+        <h3 class="text-(--mat-sys-on-surface)!">No products match your search</h3>
       </div>
     }
   </div>

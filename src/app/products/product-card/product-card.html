@@ -6,13 +6,20 @@
   <mat-card-content class="flex-1">
     @if (product().originalPrice) {
       <span
-        class="inline-block mb-3 py-1 px-2 rounded-full text-xs font-semibold text-(--mat-sys-on-primary) bg-(--mat-sys-primary)"
+        class="inline-block mb-3 mt-2 py-1 px-2 rounded-full text-xs font-semibold text-(--mat-sys-on-primary) bg-(--mat-sys-primary)"
         >On Sale</span
       >
+      <p class="flex items-baseline gap-2 ml-3">
+        <span class="font-semibold text-(--mat-sys-primary)">${{ product().price }}</span>
+        <span class="text-(--mat-sys-on-surface-variant) line-through"
+          >${{ product().originalPrice }}</span
+        >
+      </p>
+    } @else {
+      <p class="font-semibold text-(--mat-sys-primary)">${{ product().price }}</p>
     }
 
-    <p>{{ product().description }}</p>
-    <p class="mt-4 text-lg font-semibold">${{ product().price }}</p>
+    <p class="pt-4">{{ product().description }}</p>
   </mat-card-content>
 
   <mat-card-actions>
